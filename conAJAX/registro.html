@@ -1,0 +1,172 @@
+<html>
+
+<head>
+    <title>Parqueadero - Registro</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center nav-shadow">
+        <ul class="navbar-nav">
+            <li class="nav-item active logo">
+                <a class="nav-link-logo navbar-brand" href="../index.html">Parqueadero</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="container justify-content-center">
+        <div class="card card-formulario ">
+            <div class="card-header text-center text-white text-blanka">
+                <strong id="titulo">
+                    <h3>Registro de nuevo vehiculo</h3>
+                </strong>
+            </div>
+            <br>
+            <form id="formulario" method="POST" class="needs-validation in-pd" novalidate
+                enctype="multipart/form-data">
+                <div class="container">
+                    <span class="card-subtitle mb-2 text-muted sb-pd blanka">Propietario</span>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <input id="nombres" type="text" name="nombres" class="form-control" placeholder="Nombres" required>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+
+                        <div class="col-6 form-group">
+                            <input id="apellidos" type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <span class="card-subtitle mb-2 text-muted sb-pd blanka">Vehiculo</span>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <select id="color" name="color" class="custom-select" id="color_selector"
+                                onclick="activeOColor(this);">
+                                <option selected>Color...</option>
+                                <option value="0">Blanco</option>
+                                <option value="1">Negro</option>
+                                <option value="3">Gris</option>
+                                <option value="4">Plata</option>
+                                <option value="5">Rojo</option>
+                                <option value="6">Azul</option>
+                                <option value="7">Café</option>
+                                <option value="8">Beige</option>
+                                <option value="9">Verde</option>
+                                <option value="10">Anaranjado</option>
+                                <option value="11">Amarillo</option>
+                                <option value="12">Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <input id="color-otro" type="text" name="color-otro" placeholder="Otro Color"
+                                class="form-control" disabled>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <input id="placa" type="text" name="placa" placeholder="Placa" class="form-control" required>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+                    </div>
+                    <span class="card-subtitle mb-2 text-muted sb-pd blanka">Fecha de Ingreso</span>
+                    <div class="row">
+                        <div class="col-6 form-group input-group">
+                            <input id="relog" type="text" style="text-align:center;" name="fecha-ingreso"
+                                value="" class="form-control" disabled>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            <div class="custom-file">
+                                <input id="foto" type="file" name="foto" class="custom-file-input" id="foto"
+                                    aria-describedby="inputGroupFileAddon01" required>
+                                <label class="custom-file-label" for="inputGroupFile01">Foto</label>
+                            </div>
+                            <div class="invalid-feedback">Este campo es necesario.</div>
+                        </div>
+                    </div>
+                    <!--place holder car
+                        <div class="row justify-content-center">
+                            <img class="foto-cr" src="img/car_placeholder.png">
+                        </div>
+                        -->
+                    <input id="enviar" name="submit" class="btn-primary btn" style="border-color: black;" type="button"
+                        value="Registrar">
+                    <div id="outRes"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // AJAX
+        $("#enviar").click(function(){
+            var parametros = new FormData(document.getElementById('formulario'));
+            //var datos = $('#formulario').serialize();
+
+            $.ajax({
+                url: 'guardar_registro.php',
+                type: 'POST',            
+                data: parametros,
+                contentType: false,
+                processData: false
+            })
+            .done(function(res){
+                $('#outRes').html(res);
+            })
+            .fail(function(){
+                console.log("error");
+            })
+            .always(function(){
+                console.log("complete");
+            })
+
+        });
+
+        setInterval(function(){
+            $.ajax({
+                url: 'tiempo_servidor.php',
+                type: 'GET',
+            })
+            .done(function(res){
+                document.getElementById('relog').value = res;
+            })
+            .fail(function(){
+            console.log("error");
+            })
+            .always(function(){
+            console.log("complete");
+            })
+        },1000);
+
+        
+    </script>
+    <script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+
+</html>

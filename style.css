@@ -1,0 +1,142 @@
+body{
+     font-family: Arial,
+     Helvetica,
+     sans-serif;
+    background-image: url("img/background4.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+
+@font-face{
+    font-family: blanka;
+    src: url("fonts/HAMBH___.TTF");
+    
+    /*
+        src: url("fonts/NFS_by_JLTV.ttf");
+        src: src: url("fonts/Blanka-Regular.ttf");
+    */
+}
+
+.caja{
+    width: 280px;
+    height: 300px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 4px 4px 6px #000000;
+    color: #000000;
+    opacity: 0.95;
+    font-size: 20px;
+
+}
+
+.card-formulario{
+    width: 70%;
+    box-shadow: 4px 4px 6px black;
+    margin: 0 auto;
+}
+
+.in-pd{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sb-pd{
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+}
+.opcionimg{
+    border-radius: 8px;
+    width: 195px;
+    height: 195px;
+    
+}
+
+.caja:hover{
+    transition: 0.1s ease;
+    box-shadow: #CCC 1px 0 20px;
+    font-size: 25px;
+    opacity: 1;
+}
+
+
+.logo:hover{
+    transition: 0.1s ease;
+    text-shadow: #CCC 1px 0 20px;
+}
+
+.fts-logo{
+    font-size: 1.7rem;
+}
+.foto-cr{
+   vertical-align: middle;
+   border-style: none;
+   width: 50%;
+   height: 50%;
+   border: solid;
+}
+
+.navbar-expand-sm .navbar-nav .nav-link-logo {
+    padding-right: .5rem;
+    padding-left: .5rem;
+    font-size: 1.4rem;
+}
+
+.custom-file-input~.custom-file-label::after {
+    font-family: blanka;
+    content: "Abrir";
+    color: white;
+    background-color: #343a40 !important;
+}
+
+.btn-primary{
+    font-family: blanka;
+    background-color: #343a40 !important;
+    color: #ffffff;
+    border-color: black;
+    border-top-color: black;
+    border-right-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+}
+
+.btn-primary:hover{
+    text-shadow: #CCC 1px 0 20px;
+}
+
+.caja-item{
+    border-right: 5px #343a40;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    box-shadow: inset -1px -1px 6px 3px darkgrey;
+}
+
+.lista-img{
+        border-radius: 8px;
+        width: 195px;
+        height: 195px;
+        border: groove 1px;
+        margin-top: 2%;
+}
+
+.card-listado{
+    box-shadow: 4px 4px 6px black;
+    margin-bottom: 20px;
+}
+
+.nav-shadow{
+    font-family: blanka;
+    box-shadow: 0px 1px 8px black;
+}
+
+.text-blanka{
+    background-color: #343a40 !important;
+    font-family: blanka;
+}
+
+.blanka {
+    font-family: blanka;
+}
