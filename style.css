@@ -21,7 +21,7 @@ body{
 .caja{
     width: 280px;
     height: 300px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 20px;
     padding: 10px;
     box-shadow: 4px 4px 6px #000000;
@@ -36,6 +36,7 @@ body{
     box-shadow: 4px 4px 6px black;
     margin: 0 auto;
     margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .in-pd{
@@ -52,16 +53,27 @@ body{
     border-radius: 8px;
     width: 195px;
     height: 195px;
+    opacity: 1;
     
+}
+
+.caja:hover .opcionimg{
+    /* hover de imagen cuando caja */
+    transition: 0.5s ease;
+    border-radius: 100%;
 }
 
 .caja:hover{
     transition: 0.1s ease;
     box-shadow: #CCC 1px 0 20px;
     font-size: 25px;
-    opacity: 1;
+    background-color: rgb(255, 255, 255);
+
 }
 
+.caja:active{
+    box-shadow: none;
+}
 
 .logo:hover{
     transition: 0.1s ease;
@@ -107,25 +119,36 @@ body{
     text-shadow: #CCC 1px 0 20px;
 }
 
+.btn-primary:active{
+    text-shadow: none;
+}
+
 .caja-item{
     border-right: 5px #343a40;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.0);
     box-shadow: inset -1px -1px 6px 3px darkgrey;
 }
 
 .lista-img{
-        border-radius: 8px;
+        border-radius: 10px;
         width: 195px;
         height: 195px;
-        border: groove 1px;
+        border: groove 1.5px;
         margin-top: 2%;
 }
 
 .card-listado{
     box-shadow: 4px 4px 6px black;
     margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    
 }
 
 .nav-shadow{
