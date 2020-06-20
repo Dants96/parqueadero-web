@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center nav-shadow">
+    <nav class="navbar navbar-expand-sm navbar-dark justify-content-center nav-shadow">
         <ul class="navbar-nav">
             <li class="nav-item active logo">
                 <a class="nav-link-logo navbar-brand" href="index.html">Parqueadero</a>
@@ -113,7 +113,7 @@
                             <img class="foto-cr" src="img/car_placeholder.png">
                         </div>
                         -->
-                    <input id="enviar" name="submit" class="btn-primary btn" style="border-color: black;" type="submit"
+                    <input id="enviar" name="submit" class=" btn btn-primary " type="submit"
                         value="Registrar">
                     <div id="outRes"></div>
                 </div>
@@ -150,6 +150,24 @@
 
 
         $(document).ready(function () {
+                  $.ajax({
+                  url: 'phpServ/authServ.php',
+                  type: 'GET',
+                  })
+                  .done(function(res){
+                  console.log(res);
+                  if(res == 'guess'){
+                  alert("inicia secion antes de seguir");
+                  location.href = "/parqueadero-web/login.html";
+                  }
+                  })
+                  .fail(function(){
+                  console.log("error");
+                  })
+                  .always(function(){
+                  console.log("complete");
+                  })
+
             $.ajax({
                     url: 'phpServ/dateServ.php',
                     type: 'GET',

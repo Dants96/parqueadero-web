@@ -8,6 +8,8 @@ body{
     background-size: cover; 
 }
 
+
+
 @font-face{
     font-family: blanka;
     src: url("fonts/HAMBH___.TTF");
@@ -105,12 +107,12 @@ body{
     font-family: blanka;
     content: "Abrir";
     color: white;
-    background-color: #343a40 !important;
+    background-color: rgba(0,0,0,0.9);
 }
 
 .btn-primary{
     font-family: blanka;
-    background-color: #343a40 !important;
+    background-color: rgba(0,0,0,0.9);
     color: #ffffff;
     border-color: black;
     border-top-color: black;
@@ -127,6 +129,7 @@ body{
 
 .btn-primary:hover{
     text-shadow: #CCC 1px 0 20px;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .btn-primary:active{
@@ -164,10 +167,11 @@ body{
 .nav-shadow{
     font-family: blanka;
     box-shadow: 0px 1px 8px black;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .text-blanka{
-    background-color: #343a40 !important;
+    background-color: rgba(0,0,0,0.9);
     font-family: blanka;
 }
 

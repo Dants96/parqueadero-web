@@ -3,10 +3,9 @@
 <head>
     <title>Parqueadero</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,13 +19,26 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center nav-shadow">
+    <nav class="navbar navbar-expand-sm nav-shadow navbar-dark justify-content-center ">
         <ul class="navbar-nav">
             <li class="nav-item active logo">
                 <a class="nav-link-logo navbar-brand" href="index.html">Parqueadero</a>
             </li>
         </ul>
+        <ul class="navbar-nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link navbar-brand" href="registroUsuario.html">Registrase</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-brand" href="login.html">Entrar</a>
+            </li>
+            <li class="nav-item">
+                <a id="salir" class="nav-link navbar-brand" href="#">Salir</a>
+            </li>
+            
+        </ul>
     </nav>
+    
     <br>
     <br>
     <br>
@@ -47,6 +59,26 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        $('#salir').on('click', function(){
+            $.ajax({
+            url: 'phpServ/cerrarSesServ.php',
+            type: 'GET',
+            })
+            .done(function(res){
+            alert("sesion cerrada");
+            location.reload();
+            })
+            .fail(function(){
+            console.log("error");
+            })
+            .always(function(){
+            console.log("complete");
+            })
+        });
+    </script>
 </body>
 
 </html>
