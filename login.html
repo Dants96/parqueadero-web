@@ -1,15 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parqueadero - Ingresar</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="style.css"/>
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="scripts/script_requireds.js"></script>
 </head>
+
 <body>
-    <h1>Tienes que ingresr primero!</h1>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center nav-shadow">
+        <ul class="navbar-nav">
+            <li class="nav-item active logo">
+                <a class="nav-link-logo navbar-brand" href="index.html">Parqueadero</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container cesp">
+        <div class="row  justify-content-center">
+            <div class="col-6">
+                <div class="card card-formulario">
+                    <div class="card-header text-center text-white text-blanka">
+                        <strong id="titulo">
+                            <h3>Iniciar Sesión</h3>
+                        </strong>
+                    </div>
+                    <br>
+                    <form method="POST" class="needs-validation in-pd" style="margin-bottom: 20px;" action="#" novalidate>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <input id="usuario" type="text" name="usuarioIN" class="form-control"
+                                        placeholder="Nombre de usuario" required style="text-align: center;">
+                                    <div class="invalid-feedback">Ingrese su nombre de usuario.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <input id="pwd" type="text" name="pwdIN" class="form-control"
+                                        placeholder="Contrasña" required style="text-align: center;">
+                                    <div class="invalid-feedback">Ingrese su nombre de usuario.</div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <input id="enviar" name="submit" class="btn-primary btn" type="submit"
+                                        value="ingresar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="card-footer text-muted">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col" style="text-align: end; margin-top: auto; margin-bottom: auto;">
+                                Usuario nuevo ?
+                            </div>
+                            <div class="col ">
+                                <input id="irReg" name="submit2" class="btn-primary btn" type="button"
+                                    value="Registrarse">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        $("#irReg").on("click", function () {
+            location.href = "/parqueadero-web/registroUsuario.html";
+        });
+
+        $(".enviar").on("click", function () {
+
+        });
+    </script>
 </body>
+
 </html>

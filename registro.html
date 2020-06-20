@@ -17,6 +17,7 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
@@ -27,9 +28,9 @@
             </li>
         </ul>
     </nav>
-    <br>
-    <br>
-    <div class="container justify-content-center">
+    
+
+    <div class="container justify-content-center cesp">
         <div class="card card-formulario ">
             <div class="card-header text-center text-white text-blanka">
                 <strong id="titulo">
@@ -60,8 +61,8 @@
                     <div class="row">
                         <div class="col-6 form-group">
                             <select id="color" name="color" class="custom-select" id="color_selector"
-                                onclick="activeOColor(this);">
-                                <option selected>Color...</option>
+                                onclick="activeOColor(this);" required>
+                                <option selected value="">Color...</option>
                                 <option value="0">Blanco</option>
                                 <option value="1">Negro</option>
                                 <option value="3">Gris</option>
@@ -112,7 +113,7 @@
                             <img class="foto-cr" src="img/car_placeholder.png">
                         </div>
                         -->
-                    <input id="enviar" name="submit" class="btn-primary btn" style="border-color: black;" type="button"
+                    <input id="enviar" name="submit" class="btn-primary btn" style="border-color: black;" type="submit"
                         value="Registrar">
                     <div id="outRes"></div>
                 </div>
@@ -121,29 +122,32 @@
     </div>
     <script>
         // AJAX
-        var date = "";
+        $(document).on('submit', '#formulario', function(event){
+            event.preventDefault();
 
-        $("#enviar").click(function () {
             var parametros = new FormData(document.getElementById('formulario'));
-
             $.ajax({
-                    url: 'phpServ/registrarServ.php',
-                    type: 'POST',
-                    data: parametros,
-                    contentType: false,
-                    processData: false
-                })
-                .done(function (res) {
-                    $('#outRes').html(res);
-                })
-                .fail(function () {
-                    console.log("error");
-                })
-                .always(function () {
-                    console.log("complete");
-                })
+            url: 'phpServ/registrarServ.php',
+            type: 'POST',
+            data: parametros,
+            contentType: false,
+            processData: false
+            })
+            .done(function (res) {
+            $('#outRes').html(res);
+            })
+            .fail(function () {
+            console.log("error");
+            })
+            .always(function () {
+            console.log("complete");
+            })
 
         });
+
+
+        var date = "";
+
 
         $(document).ready(function () {
             $.ajax({
@@ -172,9 +176,7 @@
             console.log(rel);
         }, 1000);
 
-
-
-
+        
         /* el relog tiene que ser ejecutado en cliente
         setInterval(function(){
             $.ajax({

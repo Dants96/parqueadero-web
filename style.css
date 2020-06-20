@@ -75,8 +75,12 @@ body{
     box-shadow: none;
 }
 
+.logo{
+    text-shadow: none;
+    transition: text-shadow 0.2s ease;
+
+}
 .logo:hover{
-    transition: 0.1s ease;
     text-shadow: #CCC 1px 0 20px;
 }
 
@@ -113,6 +117,12 @@ body{
     border-right-color: black;
     border-bottom-color: black;
     border-left-color: black;
+    text-shadow: none;
+    transition: text-shadow 0.5s;
+}
+
+.btn:hover{
+    border-color: #000000;
 }
 
 .btn-primary:hover{
@@ -167,4 +177,8 @@ body{
 
 #outRes .row.caja-item {
     border-radius: 1.1%;
+}
+
+.cesp{
+    margin-top: 5%;
 }
