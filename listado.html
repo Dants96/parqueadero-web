@@ -6,27 +6,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-     </script>
-     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-     </script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-     </script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-   
-    <nav class="navbar navbar-expand-sm navbar-dark justify-content-center nav-shadow">
-        <ul class="navbar-nav">
-            <li class="nav-item active logo">
-                <a class="nav-link-logo navbar-brand" href="index.html">Parqueadero</a>
-            </li>
-        </ul>
+
+    <nav class="navbar navbar-expand-lg nav-shadow navbar-dark">
+        <a class="nav-link-logo logo navbar-brand" href="index.html">Parqueadero</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="registro.html">Registrar vehiculo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="listado.html">Ver registrados</a>
+                </li>
+                <li id="vr_regu" class="nav-item">
+
+                </li>
+                <li id="vr_logu" class="nav-item">
+
+                </li>
+                <li id="salir" class="nav-item">
+
+                </li>
+
+            </ul>
+        </div>
     </nav>
     <br>
     <br>
@@ -45,43 +64,43 @@
     </div>
 
     <script>
-        $(document).ready(function(){
-             $.ajax({
-             url: 'phpServ/authServ.php',
-             type: 'GET',
-             })
-             .done(function(res){
-             console.log(res);
-             if(res == 'guess'){
-             alert("inicia secion antes de seguir");
-             location.href = "/parqueadero-web/login.html";
-             }
-             })
-             .fail(function(){
-             console.log("error");
-             })
-             .always(function(){
-             console.log("complete");
-             })
+        $(document).ready(function () {
+            $.ajax({
+                    url: 'phpServ/authServ.php',
+                    type: 'GET',
+                })
+                .done(function (autenticado) {
+                    console.log(autenticado);
+                    if (!autenticado) {
+                        alert("inicia secion antes de seguir");
+                        location.href = "/parqueadero-web/login.html";
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                })
 
 
             $.ajax({
-            url: 'phpServ/listarServ.php',
-            type: 'GET',
-            })
-            .done(function(res){
-                $('#lista').html(res);
-            })
-            .fail(function(){
-            console.log("error");
-            })
-            .always(function(){
-            console.log("complete");
-            })
-            
-        });
+                    url: 'phpServ/listarServ.php',
+                    type: 'GET',
+                })
+                .done(function (res) {
+                    $('#lista').html(res);
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                })
 
+        });
     </script>
+    <script src="scripts/script_navbar.js"></script>
 </body>
 
 </html>

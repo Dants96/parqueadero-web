@@ -1,4 +1,3 @@
-
 // cambiar los required 
 (function () {
     'use strict';
@@ -17,4 +16,3 @@
         });
     }, false);
 })();
-

@@ -1,5 +1,5 @@
 <?php
-sleep(2);
+sleep(0.8);
     if( isset($_POST['usuarioIN']) && isset($_POST['pwdIN'])){
         require 'conexionBDServ.php';
         $consulta = $conexion->prepare("SELECT usuario_nom, usuario_ape, usuario_tipo, usuario_pwd FROM usuarios WHERE usuario_nick = ?");

@@ -13,12 +13,31 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark justify-content-center nav-shadow">
-        <ul class="navbar-nav">
-            <li class="nav-item active logo">
-                <a class="nav-link-logo navbar-brand" href="index.html">Parqueadero</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg nav-shadow navbar-dark">
+        <a class="nav-link-logo logo navbar-brand" href="index.html">Parqueadero</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="registro.html">Registrar vehiculo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="listado.html">Ver registrados</a>
+                </li>
+                <li id="vr_regu" class="nav-item">
+
+                </li>
+                <li id="vr_logu" class="nav-item">
+
+                </li>
+                <li id="salir" class="nav-item">
+
+                </li>
+
+            </ul>
+        </div>
     </nav>
 
     <div class="container cesp">
@@ -31,7 +50,8 @@
                         </strong>
                     </div>
                     <br>
-                    <form id="formulario" method="POST" class="needs-validation in-pd" style="margin-bottom: 20px;" action="#" novalidate>
+                    <form id="formulario" method="POST" class="needs-validation in-pd" style="margin-bottom: 20px;"
+                        action="#" novalidate>
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 form-group">
@@ -50,13 +70,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <input id="enviar" name="submit" class="btn-primary btn" type="submit"
-                                        value="ingresar">
+                                        value="Ingresar">
                                 </div>
                             </div>
                             <div id="outRes" style="margin-top: 10px"></div>
                         </div>
                     </form>
-                     
+
                     <div class="card-footer text-muted">
                         <div class="row d-flex justify-content-center">
                             <div class="col" style="text-align: end; margin-top: auto; margin-bottom: auto;">
@@ -84,57 +104,81 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/script_navbar.js"></script>
     <script>
-        $(".custom-file-input").on("change", function () {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(document).ready(function () {
+            $.ajax({
+                    url: 'phpServ/authServ.php',
+                    type: 'GET',
+                })
+                .done(function (autenticado) {
+                    console.log(autenticado);
+                    if (autenticado) {
+                        alert("ya has iniciado sesion");
+                        location.href = "/parqueadero-web/index.html";
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                })
         });
 
         $("#irReg").on("click", function () {
             location.href = "/parqueadero-web/registroUsuario.html";
         });
 
-        function alerta(msg){
-            $('#outRes').html("<div class=\"alert alert-danger\" role=\"alert\"><p>" + msg +"</p></div>");
+        function alerta(msg) {
+            $('#outRes').html("<div class=\"alert alert-danger\" role=\"alert\"><p>" + msg + "</p></div>");
         }
 
-        function requiredPop(elemnt, color){
+        function requiredPop(elemnt, color) {
             $(elemnt).css('border-color', color);
             $(elemnt).css('background-image', "none");
         }
 
-        $(document).on('submit', '#formulario', function(event){
-        event.preventDefault();
-        $.ajax({
-        url: 'phpServ/loginServ.php',
-        type: 'POST',
-        data: $(this).serialize(),
-        beforeSend: function(){
-            $('#enviar').val('Validando...');
-        },
-        processData: false
-        })
-        .done(function (res) {
-            var respuesta = JSON.parse(res);
-            if(!respuesta.error){
-                alerta("hola " + respuesta.nombre);
-            }else{
-                alerta(respuesta.msg);
-                requiredPop('#usuario', '#ced4da');
-                requiredPop('#paswd', '#ced4da');
-            }
-            
-        })
-        .fail(function () {
-        console.log("error");
-        })
-        .always(function () {
-        console.log("complete");
-        $('#enviar').val('ingresar');
-        })
+        function requiredDOSPop(element1, element2, col) {
+            requiredPop(element1, col);
+            requiredPop(element2, col);
+        }
+
+        $(document).on('submit', '#formulario', function (event) {
+            event.preventDefault();
+
+            requiredDOSPop('#usuario', '#paswd', '#ced4da');
+
+            $.ajax({
+                    url: 'phpServ/loginServ.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    beforeSend: function () {
+                        $('#enviar').val('Validando...');
+                    },
+                    processData: false
+                })
+                .done(function (res) {
+                    var respuesta = JSON.parse(res);
+                    if (!respuesta.error) {
+                        requiredDOSPop('#usuario', '#paswd', '#28a745');
+                        alert("Hola " + respuesta.nombre + respuesta.apellido);
+                        location.href = "/parqueadero-web/index.html"
+                    } else {
+                        alerta(respuesta.msg);
+                        requiredDOSPop('#usuario', '#paswd', '#dc3545');
+                    }
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                    $('#enviar').val('Ingresar');
+                })
 
         });
-
     </script>
 </body>
 

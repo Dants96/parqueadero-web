@@ -1,26 +1,30 @@
-body{
-     font-family: Arial,
-     Helvetica,
-     sans-serif;
+body {
+    font-family: Arial,
+        Helvetica,
+        sans-serif;
     background-image: url("img/background4.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover; 
+    background-size: cover;
 }
 
 
 
-@font-face{
+@font-face {
     font-family: blanka;
     src: url("fonts/HAMBH___.TTF");
-    
+
     /*
         src: url("fonts/NFS_by_JLTV.ttf");
         src: src: url("fonts/Blanka-Regular.ttf");
     */
 }
 
-.caja{
+.navbar-dark .navbar-nav .nav-link {
+    font-size: inherit;
+}
+
+.caja {
     width: 280px;
     height: 300px;
     background-color: rgb(255, 255, 255);
@@ -33,7 +37,7 @@ body{
 
 }
 
-.card-formulario{
+.card-formulario {
     width: 70%;
     box-shadow: 4px 4px 6px black;
     margin: 0 auto;
@@ -41,31 +45,32 @@ body{
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.in-pd{
+.in-pd {
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.sb-pd{
+.sb-pd {
     padding-bottom: 10px;
     padding-left: 10px;
 
 }
-.opcionimg{
+
+.opcionimg {
     border-radius: 8px;
     width: 195px;
     height: 195px;
     opacity: 1;
-    
+
 }
 
-.caja:hover .opcionimg{
+.caja:hover .opcionimg {
     /* hover de imagen cuando caja */
     transition: 0.5s ease;
     border-radius: 100%;
 }
 
-.caja:hover{
+.caja:hover {
     transition: 0.1s ease;
     box-shadow: #CCC 1px 0 20px;
     font-size: 25px;
@@ -73,28 +78,30 @@ body{
 
 }
 
-.caja:active{
+.caja:active {
     box-shadow: none;
 }
 
-.logo{
+.logo {
     text-shadow: none;
     transition: text-shadow 0.2s ease;
-
+    margin-left: 2%;
 }
-.logo:hover{
+
+.logo:hover {
     text-shadow: #CCC 1px 0 20px;
 }
 
-.fts-logo{
+.fts-logo {
     font-size: 1.7rem;
 }
-.foto-cr{
-   vertical-align: middle;
-   border-style: none;
-   width: 50%;
-   height: 50%;
-   border: solid;
+
+.foto-cr {
+    vertical-align: middle;
+    border-style: none;
+    width: 50%;
+    height: 50%;
+    border: solid;
 }
 
 .navbar-expand-sm .navbar-nav .nav-link-logo {
@@ -107,12 +114,12 @@ body{
     font-family: blanka;
     content: "Abrir";
     color: white;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-.btn-primary{
+.btn-primary {
     font-family: blanka;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     color: #ffffff;
     border-color: black;
     border-top-color: black;
@@ -123,20 +130,20 @@ body{
     transition: text-shadow 0.5s;
 }
 
-.btn:hover{
+.btn:hover {
     border-color: #000000;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     text-shadow: #CCC 1px 0 20px;
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-.btn-primary:active{
+.btn-primary:active {
     text-shadow: none;
 }
 
-.caja-item{
+.caja-item {
     border-right: 5px #343a40;
     margin-left: auto;
     margin-right: auto;
@@ -149,29 +156,29 @@ body{
     box-shadow: inset -1px -1px 6px 3px darkgrey;
 }
 
-.lista-img{
-        border-radius: 10px;
-        width: 195px;
-        height: 195px;
-        border: groove 1.5px;
-        margin-top: 2%;
+.lista-img {
+    border-radius: 10px;
+    width: 195px;
+    height: 195px;
+    border: groove 1.5px;
+    margin-top: 2%;
 }
 
-.card-listado{
+.card-listado {
     box-shadow: 4px 4px 6px black;
     margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    
+
 }
 
-.nav-shadow{
+.nav-shadow {
     font-family: blanka;
     box-shadow: 0px 1px 8px black;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.text-blanka{
-    background-color: rgba(0,0,0,0.9);
+.text-blanka {
+    background-color: rgba(0, 0, 0, 0.9);
     font-family: blanka;
 }
 
@@ -183,6 +190,6 @@ body{
     border-radius: 1.1%;
 }
 
-.cesp{
+.cesp {
     margin-top: 5%;
 }
