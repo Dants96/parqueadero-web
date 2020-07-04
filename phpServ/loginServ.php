@@ -6,6 +6,7 @@ sleep(0.8);
         $consulta->bind_param("s", $_POST['usuarioIN']); 
         if(!$consulta->execute()){
             echo (json_encode(array('error' => true, 'msg' => 'Error al conectar con la base de datos')));
+        
         }else{
             $usuarios = $consulta->get_result();
             if($usuarios->num_rows == 1){

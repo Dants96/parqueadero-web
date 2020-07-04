@@ -41,7 +41,7 @@
     </nav>
 
     <div class="container justify-content-center cesp">
-        <div class="card card-formulario ">
+        <div id="card_reg" class="card card-formulario ">
             <div class="card-header text-center text-white text-blanka">
                 <strong id="titulo">
                     <h3>Registro de nuevo Usuario</h3>
@@ -55,8 +55,8 @@
                         <div class="col-6 form-group">
                             <select id="tipU" name="tipU" class="custom-select" required>
                                 <option selected value="">Tipo...</option>
-                                <option value="0">Usuairo de Parqueadero</option>
-                                <option value="1">Administrador de Parqueadero</option>
+                                <option value="1">Usuairo de Parqueadero</option>
+                                <option value="2">Administrador de Parqueadero</option>
                             </select>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <div class="col-6 form-group">
                             <input id="user_nick" type="text" name="user_nick" placeholder="Nombre de usuario"
                                 class="form-control" required>
-                            <div class="invalid-feedback">Este campo es necesario.</div>
+                            <div id="fedUsNk" class="invalid-feedback">Este campo es necesario.</div>
                         </div>
                     </div>
                     <span class="card-subtitle mb-2 text-muted sb-pd blanka">Seguridad</span>
@@ -114,53 +114,7 @@
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="scripts/script_navbar.js"></script>
-        <script>
-            $(document).ready(function () {
-                $.ajax({
-                        url: 'phpServ/authServ.php',
-                        type: 'GET',
-                    })
-                    .done(function (autenticado) {
-                        console.log(autenticado);
-                        if (autenticado) {
-                            alert("ya has iniciado sesion");
-                            location.href = "/parqueadero-web/index.html";
-                        }
-                    })
-                    .fail(function () {
-                        console.log("error");
-                    })
-                    .always(function () {
-                        console.log("complete");
-                    })
-            });
-
-            function alerta(msg) {
-                $('#outRes').html(
-                    "<div class=\"alert alert-danger\" role=\"alert\"><h4 class=\"alert-heading\">Algo salio mal!</h4><p>" +
-                    msg + "</p></div>");
-            }
-
-            function requiredPop(elemnt, fed, msg) {
-                $(elemnt).css('border-color', '#dc3545');
-                $(elemnt).css('background-image', "none");
-                $(fed).html(msg);
-                $(fed).css('display', 'flex');
-            }
-
-            function validarIn() {
-                if ($('#pwd').val() != $('#pwdR').val()) {
-                    requiredPop('#pwdR', '#fedPwdR', 'La contraseña debe coincidir');
-                    requiredPop('#pwd', '#fedPwd', '');
-                }
-            }
-
-            $(document).on('submit', '#formulario', function (event) {
-                event.preventDefault();
-                validarIn();
-
-            });
-        </script>
+        <script src="scripts/script_registroUsuario.js"></script>
 </body>
 
 </html>
